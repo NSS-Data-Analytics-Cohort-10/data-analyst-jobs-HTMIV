@@ -164,7 +164,7 @@ GROUP BY
  company
 ORDER BY avg_rating DESC, company ASC;
 
----AMERICAN EXPRESS, GENERAL MOTORS,KAISER PERMANENTE,MICROSOFT,NIKE,UNILEVER
+-- AMERICAN EXPRESS, GENERAL MOTORS,KAISER PERMANENTE,MICROSOFT,NIKE,UNILEVER
 -- 4.1999998090000000
 
 --11.	Find all the job titles that contain the word ‘Analyst’. How many different job titles are there? 
@@ -185,7 +185,7 @@ How many different job titles are there?
 */ 
 
 SELECT 
-  count(DISTINCT title) count
+ COUNT(DISTINCT title) count
 FROM 
  data_analyst_jobs 
 WHERE
@@ -200,7 +200,7 @@ How many different job titles do not contain either the word ‘Analyst’ or th
 */
 
 SELECT 
-  COUNT(title) COUNT
+  COUNT(DISTINCT title) COUNT
 FROM 
  data_analyst_jobs 
 WHERE
@@ -260,7 +260,7 @@ GROUP BY
  ORDER BY COUNT DESC
 LIMIT (4))
 
-SELECT SUM(COUNT) FROM X
+SELECT SUM(COUNT) TOTALS FROM X
 
 -- 232
 
