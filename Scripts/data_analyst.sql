@@ -240,7 +240,7 @@ GROUP BY
 
 --  Which three industries are in the top 4 on this list? How many jobs have been listed for more than 3 weeks for each of the top 4?
 
---INTERNET AND SOFTWARE(62), BANKS AND FINANCIAL SERVICES(61), CONSULTING AND BUSINESS SERVICES(57)
+--INTERNET AND SOFTWARE(62), BANKS AND FINANCIAL SERVICES(61), CONSULTING AND BUSINESS SERVICES(57), HEALTH CARE(52)
 
 /*
 How many jobs have been listed for more than 3
