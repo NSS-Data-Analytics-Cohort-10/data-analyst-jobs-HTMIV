@@ -197,20 +197,20 @@ SELECT
 FROM 
  data_analyst_jobs 
 WHERE
- title like '%ANALYST%';
+ UPPER(title) like '%ANALYST%';
  
 /*
 How many different job titles are there?
 */ 
 
 SELECT 
- COUNT(DISTINCT title) count
+ COUNT(DISTINCT(UPPER(title))) COUNT
 FROM 
  data_analyst_jobs 
 WHERE
  UPPER(title) like '%ANALYST%';
 
--- 774
+-- 770
 
 -- 12.	How many different job titles do not contain either the word ‘Analyst’ or the word ‘Analytics’? What word do these positions have in common?
 
@@ -219,7 +219,7 @@ How many different job titles do not contain either the word ‘Analyst’ or th
 */
 
 SELECT 
-  COUNT(DISTINCT title) COUNT
+  COUNT(DISTINCT(UPPER(title))) COUNT
 FROM 
  data_analyst_jobs 
 WHERE
@@ -236,9 +236,9 @@ SELECT
 FROM 
  data_analyst_jobs 
 WHERE
- (title like '%Analyst%' or title like '%Analytics%');
+ UPPER(title) not like '%ANALYST%' and UPPER(title) not like '%ANALYTICS%';
 
--- Data
+-- Tableau
 
 -- **BONUS:**
 -- You want to understand which jobs requiring SQL are hard to fill. Find the number of jobs by industry (domain) that require SQL and have been posted longer than 3 weeks. 
