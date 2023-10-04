@@ -106,22 +106,22 @@ GROUP BY
 
 
 SELECT 
- COUNT(DISTINCT title ) 
+ COUNT(DISTINCT UPPER(title)) 
 FROM 
  data_analyst_jobs 
 
--- 881
+-- 877
 
 -- 8.	How many unique job titles are there for California companies?
 
 SELECT 
- COUNT(DISTINCT title)
+ COUNT(DISTINCT UPPER(title))
 FROM 
  data_analyst_jobs 
 WHERE
- location ='CA'
+ UPPER(location) ='CA'
  
--- 230
+-- 229
 
 -- 9.	Find the name of each company and its average star rating for all companies that have more than 5000 reviews across all locations. How many companies are there with more that 5000 reviews across all locations?
 
@@ -150,7 +150,10 @@ WHERE
 -- 40
 
 -- 10.	Add the code to order the query in #9 from highest to lowest average star rating. Which company with more than 5000 reviews across all locations in the dataset has the highest star rating? What is that rating?
-
+SELECT 
+TM.company,
+TM.avg_rating 
+FROM (
 SELECT 
  CASE
  WHEN company IS NULL THEN '*UNASSIGNED COMPANY'
@@ -162,7 +165,23 @@ WHERE
  review_count > 5000 AND company is not null
 GROUP BY
  company
-ORDER BY avg_rating DESC, company ASC;
+ORDER BY avg_rating DESC, company ASC) TM
+WHERE 
+TM.avg_rating =
+(SELECT 
+MAX(avg_rating) FROM (
+SELECT 
+ CASE
+ WHEN company IS NULL THEN '*UNASSIGNED COMPANY'
+ ELSE UPPER(company) END company , 
+ AVG(star_rating) avg_rating
+FROM  
+ data_analyst_jobs
+WHERE 
+ review_count > 5000 AND company is not null
+GROUP BY
+ company
+ORDER BY avg_rating DESC, company ASC))
 
 -- AMERICAN EXPRESS, GENERAL MOTORS,KAISER PERMANENTE,MICROSOFT,NIKE,UNILEVER
 -- 4.1999998090000000
