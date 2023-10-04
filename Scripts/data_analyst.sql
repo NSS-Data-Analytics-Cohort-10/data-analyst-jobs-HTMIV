@@ -18,8 +18,8 @@ LIMIT(10);
 
 -- 3.	How many postings are in Tennessee? How many are there in either Tennessee or Kentucky?
 SELECT
- SUM(CASE WHEN location = 'TN' then 1 else 0 end) posting_TN,
- SUM(CASE WHEN location in ('TN','KY') then 1 else 0 end) posting_TN_KY
+ SUM(CASE WHEN location = 'TN' THEN 1 ELSE 0 END) posting_TN,
+ SUM(CASE WHEN location in ('TN','KY') THEN 1 ELSE 0 END) posting_TN_KY
 FROM 
  data_analyst_jobs;
 
