@@ -1,8 +1,8 @@
 -- 1.	How many rows are in the data_analyst_jobs table?
 SELECT 
-COUNT(*) 
+  COUNT(*) 
 FROM 
-data_analyst_jobs;
+  data_analyst_jobs;
 
 -- 1793
 
@@ -18,8 +18,8 @@ LIMIT(10);
 
 -- 3.	How many postings are in Tennessee? How many are there in either Tennessee or Kentucky?
 SELECT
- SUM(CASE WHEN location = 'TN' THEN 1 ELSE 0 END) posting_TN,
- SUM(CASE WHEN location in ('TN','KY') THEN 1 ELSE 0 END) posting_TN_KY
+ SUM(CASE WHEN UPPER(location) = 'TN' THEN 1 ELSE 0 END) posting_TN,
+ SUM(CASE WHEN UPPER(location) in ('TN','KY') THEN 1 ELSE 0 END) posting_TN_KY
 FROM 
  data_analyst_jobs;
 
@@ -219,11 +219,12 @@ How many different job titles do not contain either the word ‘Analyst’ or th
 */
 
 SELECT 
-  COUNT(DISTINCT(UPPER(title))) COUNT
+	  COUNT(DISTINCT(UPPER(title))) COUNT
 FROM 
- data_analyst_jobs 
+	 data_analyst_jobs 
 WHERE
-UPPER(title) not like '%ANALYST%' and UPPER(title) not like '%ANALYTICS%';
+	UPPER(title) not like '%ANALYST%' and 
+	UPPER(title) not like '%ANALYTICS%';
 
 -- 4
 
@@ -236,7 +237,8 @@ SELECT
 FROM 
  data_analyst_jobs 
 WHERE
- UPPER(title) not like '%ANALYST%' and UPPER(title) not like '%ANALYTICS%';
+ UPPER(title) not like '%ANALYST%' AND
+ UPPER(title) not like '%ANALYTICS%';
 
 -- Tableau
 
@@ -278,9 +280,7 @@ GROUP BY
  DOMAIN
  ORDER BY COUNT DESC
 LIMIT (4))
-
 SELECT SUM(COUNT) TOTALS FROM X
 
 -- 232
-
 
