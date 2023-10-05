@@ -151,8 +151,8 @@ WHERE
 
 -- 10.	Add the code to order the query in #9 from highest to lowest average star rating. Which company with more than 5000 reviews across all locations in the dataset has the highest star rating? What is that rating?
 SELECT 
-TM.company,
-TM.avg_rating 
+ TM.company,
+ TM.avg_rating 
 FROM (
 SELECT 
  CASE
@@ -264,7 +264,7 @@ GROUP BY
 --INTERNET AND SOFTWARE(62), BANKS AND FINANCIAL SERVICES(61), CONSULTING AND BUSINESS SERVICES(57), HEALTH CARE(52)
 
 /*
-How many jobs have been listed for more than 3
+How many jobs have been listed for more than 3 weeks for each of the top 4?
 */
 
 WITH X AS (
@@ -274,8 +274,9 @@ SELECT
 FROM 
  data_analyst_jobs 
 WHERE 
- skill like '%SQL%' AND 
- days_since_posting > 21 AND DOMAIN IS NOT NULL
+ UPPER(skill) like '%SQL%' AND 
+ days_since_posting > 21 AND 
+ DOMAIN IS NOT NULL
 GROUP BY
  DOMAIN
  ORDER BY COUNT DESC
