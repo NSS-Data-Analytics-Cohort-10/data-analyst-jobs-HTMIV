@@ -106,7 +106,7 @@ GROUP BY
 
 
 SELECT 
- COUNT(DISTINCT UPPER(title)) 
+ COUNT(DISTINCT(UPPER(title)))
 FROM 
  data_analyst_jobs 
 
@@ -115,7 +115,7 @@ FROM
 -- 8.	How many unique job titles are there for California companies?
 
 SELECT 
- COUNT(DISTINCT UPPER(title))
+ COUNT(DISTINCT(UPPER(title)))
 FROM 
  data_analyst_jobs 
 WHERE
@@ -133,7 +133,7 @@ SELECT
 FROM  
  data_analyst_jobs
 WHERE 
- review_count > 5000 AND company is not null
+ review_count > 5000 AND company is not null 
 GROUP BY
  company;
 
