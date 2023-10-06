@@ -33,7 +33,7 @@ SELECT
 FROM 
  data_analyst_jobs 
 WHERE  
- star_rating > 4 AND location ='TN'
+ star_rating > 4 AND UPPER(location) ='TN'
 
 -- 3
 
@@ -287,7 +287,6 @@ ORDER BY
 LIMIT (4));
 
 -- 232
-
 
 
 
