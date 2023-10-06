@@ -256,7 +256,8 @@ WHERE
  days_since_posting > 21 AND DOMAIN IS NOT NULL
 GROUP BY
  DOMAIN
- ORDER BY COUNTS DESC
+ORDER BY 
+ COUNTS DESC
 LIMIT (4);
 
 --  Which three industries are in the top 4 on this list? How many jobs have been listed for more than 3 weeks for each of the top 4?
@@ -281,7 +282,8 @@ WHERE
  DOMAIN IS NOT NULL
 GROUP BY
  DOMAIN
- ORDER BY COUNTS DESC
+ORDER BY 
+ COUNTS DESC
 LIMIT (4));
 
 -- 232
