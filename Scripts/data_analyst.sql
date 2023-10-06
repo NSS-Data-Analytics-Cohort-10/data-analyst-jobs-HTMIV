@@ -248,7 +248,7 @@ WHERE
 -- Order your results so that the domain with the greatest number of `hard to fill` jobs is at the top. 
 SELECT 
  UPPER(DOMAIN) DOMAIN,
- COUNT(*) COUNT
+ COUNT(*) COUNTS
 FROM 
  data_analyst_jobs 
 WHERE 
@@ -256,8 +256,8 @@ WHERE
  days_since_posting > 21 AND DOMAIN IS NOT NULL
 GROUP BY
  DOMAIN
- ORDER BY COUNT DESC
- LIMIT (4);
+ ORDER BY COUNTS DESC
+LIMIT (4);
 
 --  Which three industries are in the top 4 on this list? How many jobs have been listed for more than 3 weeks for each of the top 4?
 
@@ -267,10 +267,12 @@ GROUP BY
 How many jobs have been listed for more than 3 weeks for each of the top 4?
 */
 
-WITH X AS (
+SELECT
+  SUM(COUNTS) TOTAL 
+FROM(
 SELECT 
- UPPER(DOMAIN) DOMAIN,
- COUNT(*) COUNT
+  UPPER(DOMAIN) DOMAIN,
+  COUNT(*) COUNTS
 FROM 
  data_analyst_jobs 
 WHERE 
@@ -279,11 +281,14 @@ WHERE
  DOMAIN IS NOT NULL
 GROUP BY
  DOMAIN
- ORDER BY COUNT DESC
-LIMIT (4))
-SELECT SUM(COUNT) TOTALS FROM X
+ ORDER BY COUNTS DESC
+LIMIT (4));
 
 -- 232
+
+
+
+
 
 
 
