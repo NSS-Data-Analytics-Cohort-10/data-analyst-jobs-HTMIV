@@ -252,7 +252,7 @@ SELECT
 FROM 
  data_analyst_jobs 
 WHERE 
- skill like '%SQL%' AND 
+ UPPER(skill) like '%SQL%' AND 
  days_since_posting > 21 AND DOMAIN IS NOT NULL
 GROUP BY
  DOMAIN
@@ -284,4 +284,7 @@ LIMIT (4))
 SELECT SUM(COUNT) TOTALS FROM X
 
 -- 232
+
+
+
 
